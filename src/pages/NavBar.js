@@ -13,7 +13,7 @@ function Layout(props) {
         .catch(error => console.log(error))
     }
     return (
-        <div>
+        <div className="navbar">
             <nav>
                 <ul>
                     <li>
@@ -23,10 +23,10 @@ function Layout(props) {
                         props.loggedInStatus ? (
                             <>
                                 <li>
-                                    <Link to="/logout" onClick={handleClick}>Log Out</Link>
+                                    <Link to="/profile">Profile</Link>
                                 </li>
                                 <li>
-                                    <Link to="/profile">Profile</Link>
+                                    <Link to="/logout" onClick={handleClick}>Log Out</Link>
                                 </li>
                             </>
                         ) : (

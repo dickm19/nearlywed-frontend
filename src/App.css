@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  position: relative;
 }
 
 .profile-picture {
@@ -8,3 +9,44 @@
   border-radius: 50%;
   margin: 20px auto;
 }
+
+.navbar {
+  width: 100%;
+  height: 3em;
+  text-align: justify;
+}
+
+.navbar ul {
+  display: flex;
+  background-color: #f8f8f8;
+  padding: 10px 0;
+  width: 100%;
+}
+
+.navbar li {
+  list-style: none;
+  width: 100%;
+  text-align: center;
+}
+
+.navbar a {
+  padding: 10px 20px;
+  cursor: pointer;
+  /* text-align: center; */
+  text-decoration: none;
+  width: 100%;
+}
+
+.navbar a:hover {
+  background-color: #f5c3dc;
+  border-radius: 5px;
+}
+
+
+.home h1 {
+  font-size: 2.5em;
+  color: #333;
+  margin-top: 2em;
+  text-align: center;
+}
+
