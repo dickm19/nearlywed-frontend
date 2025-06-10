@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Layout from './pages/NavBar';
 import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
+import Profile from './pages/Profile';
 
 class App extends Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class App extends Component {
       user: {}
      };
   }
+
   handleLogin = (data) => {
     this.setState({
       isLoggedIn: true,
@@ -34,7 +36,7 @@ class App extends Component {
     {withCredentials: true})
     .then(response => {
       if (response.data.logged_in) {
-        this.handleLogin(response)
+        this.handleLogin(response.data)
       } else {
         this.handleLogout()
       }
@@ -59,7 +61,6 @@ class App extends Component {
               path="/signup"
               element={
                 <SignUp
-                  history={this.props.history}
                   handleLogin={this.handleLogin}
                   loggedInStatus={this.state.isLoggedIn}
                 />
@@ -69,11 +70,14 @@ class App extends Component {
               exact path="/login"
               element={
                 <LogIn
-                  history={this.props.history}
                   handleLogin={this.handleLogin}
                   loggedInStatus={this.state.isLoggedIn}
                 />
               }
+            />
+            <Route
+              exact path="/profile"
+              element={<Profile user={this.state.user} handleLogin={this.handleLogin}/>}
             />
           </Route>
         </Routes>
