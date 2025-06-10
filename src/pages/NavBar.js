@@ -21,9 +21,14 @@ function Layout(props) {
                     </li>
                     {
                         props.loggedInStatus ? (
-                            <li>
-                                <Link to="/logout" onClick={handleClick}>Log Out</Link>
-                            </li>
+                            <>
+                                <li>
+                                    <Link to="/logout" onClick={handleClick}>Log Out</Link>
+                                </li>
+                                <li>
+                                    <Link to="/profile">Profile</Link>
+                                </li>
+                            </>
                         ) : (
                             <>
                                 <li>
