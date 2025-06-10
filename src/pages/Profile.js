@@ -1,19 +1,21 @@
 import { Component } from 'react';
 import axios from 'axios';
+import image from '../assets/defaultProfile.png';
 
 class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            profilePicture: props.user.profile_picture_url || process.env.PUBLIC_URL + "/defaultProfile.png",
+            profilePicture: props.user.profile_picture_url || image
         };
     }
 
     componentWillReceiveProps(nextProps) {
         this.setState({
-            profilePicture: nextProps.user.profile_picture_url || process.env.PUBLIC_URL + "/defaultProfile.png"
+            profilePicture: nextProps.user.profile_picture_url || image
         });
     }
+
 
     handleImageChange = (event) => {
         const file = event.target.files[0];
