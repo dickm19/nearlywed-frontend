@@ -6,13 +6,14 @@ class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            profilePicture: props.user.profile_picture_url || image
+            profilePicture: props.user.avatar_url || image
         };
     }
 
     componentWillReceiveProps(nextProps) {
+        console.log('nextProps', nextProps);
         this.setState({
-            profilePicture: nextProps.user.profile_picture_url || image
+            profilePicture: nextProps.user.avatar_url || image
         });
     }
 
@@ -20,8 +21,7 @@ class Profile extends Component {
     handleImageChange = (event) => {
         const file = event.target.files[0];
         if (file) {
-            const imageUrl = URL.createObjectURL(file);
-            const formData = { user: { profile_picture_url: imageUrl } };
+            const formData = { user: { avatar: file } };
 
             axios.patch(`http://localhost:3001/users/${this.props.user.id}`, formData, {
                 withCredentials: true,
@@ -30,7 +30,7 @@ class Profile extends Component {
                 }
             })
             .then(response => {
-                this.setState({ profilePicture: response.data.user.profile_picture_url });
+                this.setState({ profilePicture: response.data.avatar_url });
             })
             .catch(error => console.log('Error uploading image:', error));
         }
