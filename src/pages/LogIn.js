@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -8,10 +8,11 @@ class LogIn extends Component {
         this.state = { 
             email: '',
             password: '',
+            password_confirmation: '',
             errors: ''
         };
     }
-    
+
     handleChange = (event) => {
         const {name, value} = event.target
         this.setState({
@@ -19,7 +20,28 @@ class LogIn extends Component {
         })
     };
 
-    handleSubmit = (event) => {
+    handleSignUp = (event) => {
+        event.preventDefault();
+        const {email, password, password_confirmation} = this.state;
+        let user = {
+            email: email,
+            password: password,
+            password_confirmation: password_confirmation
+        }
+        axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
+            .then(response => {
+                if (response.data.status === 'created') {
+                    this.props.handleLogin(response.data)
+                } else {
+                    this.setState({
+                        errors: response.data.errors
+                    })
+                }
+            })
+            .catch(error => console.log('api errors:', error))
+    };
+
+    handleLogin = (event) => {
         event.preventDefault()
         const {email, password} = this.state;
         let user = {
@@ -43,21 +65,20 @@ class LogIn extends Component {
         return (
         <div>
             <ul>
-                {this.state.errors.map(error => {
-                return <li key={error}>{error}</li>
+                {this.state.errors.map((error) => {
+                    return <li key={error}>{error}</li>
                 })}
-            </ul>
+            </ul> 
         </div>
         )
     }
-
     render() {
-        const {email, password} = this.state
+        const {email, password, password_confirmation} = this.state
 
         return (
-            <div className="login">
-                {this.props.loggedInStatus ? <Navigate to="/" /> : <h1>Log In</h1>}
-                <form onSubmit={this.handleSubmit}>
+            <div className="signup">
+                {this.props.loggedInStatus ? <Navigate to="/" /> : <h1>Sign Up</h1>}
+                <form onSubmit={this.props.signUp ? this.handleSignUp : this.handleLogin}>
                     <div className="form-group">
                         <label htmlFor="email">Email:</label>
                         <input
@@ -80,10 +101,35 @@ class LogIn extends Component {
                             onChange={this.handleChange}
                         />
                     </div>
-                    <button type="submit">Log In</button>
-                    <div className="form-group">
-                        <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
-                    </div>
+                    { 
+                        this.props.signUp ? (
+                            <>
+                                <div className="form-group">
+                                    <label htmlFor="password_confirmation">Confirm Password:</label>
+                                    <input
+                                        type="password"
+                                        id="password_confirmation"
+                                        name="password_confirmation"
+                                        value={password_confirmation}
+                                        required
+                                        onChange={this.handleChange}
+                                    />
+                                </div>
+                                <button type="submit">Sign Up</button>
+                                <div className="form-group">
+                                    <p>Already have an account? <Link to='/login'>Log In</Link></p>
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <button type="submit">Log In</button>
+                                <div className="form-group">
+                                    <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
+                                </div>
+                            </>
+                        )
+                    }
+                    
                 </form>
                 <div>
                     {
