@@ -13,7 +13,7 @@ class App extends Component {
     this.state = { 
       isLoggedIn: false,
       user: {}
-     };
+    };
   }
 
   handleLogin = (data) => {
