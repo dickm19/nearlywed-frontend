@@ -47,7 +47,7 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Layout handleLogout={handleLogout} loggedInStatus={isLoggedIn} />}
+          element={<Layout user={user} loggedInStatus={isLoggedIn} />}
         >
           <Route index element={<Home />} />
           <Route
@@ -72,7 +72,7 @@ function App() {
           />
           <Route
             path="/profile"
-            element={<Profile user={user} handleUserUpdate={handleUserUpdate} />}
+            element={<Profile user={user} handleUserUpdate={handleUserUpdate} handleLogout={handleLogout}/>}
           />
         </Route>
       </Routes>
