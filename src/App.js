@@ -16,6 +16,10 @@ function App() {
     setUser(data.user);
   };
 
+  const handleUserUpdate = (data) => {
+    setUser(data.user);
+  };
+
   const handleLogout = () => {
     setIsLoggedIn(false);
     setUser({});
@@ -68,7 +72,7 @@ function App() {
           />
           <Route
             path="/profile"
-            element={<Profile user={user} handleLogin={handleLogin} />}
+            element={<Profile user={user} handleUserUpdate={handleUserUpdate} />}
           />
         </Route>
       </Routes>
