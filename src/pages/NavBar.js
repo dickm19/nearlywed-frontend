@@ -6,7 +6,7 @@ function Layout(props) {
 
     const handleClick = () => {
         axios.delete('http://localhost:3001/logout', {withCredentials: true})
-        .then(response => {
+        .then(() => {
             props.handleLogout()
             navigate('/')
         })
