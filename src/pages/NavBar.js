@@ -1,23 +1,12 @@
-import { Outlet, Link, useNavigate } from "react-router-dom";
-import axios from 'axios';
+import { Outlet, Link } from "react-router-dom";
 
 function Layout(props) {
-    const navigate = useNavigate();
-
-    const handleClick = () => {
-        axios.delete('http://localhost:3001/logout', {withCredentials: true})
-        .then(() => {
-            props.handleLogout()
-            navigate('/')
-        })
-        .catch(error => console.log(error))
-    }
     return (
         <div className="navbar">
             <nav>
                 <ul>
                     <li>
-                        <Link to="/">Home</Link>
+                        <Link to="/"><p>Home</p></Link>
                     </li>
                     {
                         props.loggedInStatus ? (
@@ -31,7 +20,7 @@ function Layout(props) {
                             </>
                         ) : (
                             <li>
-                                <Link to="/signup">Sign Up</Link>
+                                <Link to="/signup"><p>Sign Up</p></Link>
                             </li>
                         )
                     }
