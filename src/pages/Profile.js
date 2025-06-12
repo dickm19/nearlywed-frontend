@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import image from '../assets/defaultProfile.png';
 
 function Profile(props) {
+    const navigate = useNavigate();
     const { user, handleUserUpdate } = props;
     const [profilePicture, setProfilePicture] = useState(image);
     const [editMode, setEditMode] = useState(false);
@@ -60,6 +62,16 @@ function Profile(props) {
             .catch(error => console.log('Error updating profile:', error));
     }
 
+
+    const handleLogout = () => {
+        axios.delete('http://localhost:3001/logout', {withCredentials: true})
+        .then(() => {
+            props.handleLogout()
+            navigate('/')
+        })
+        .catch(error => console.log(error))
+    }
+
     return (
         <div className="profile">
             <div className="profile-image-section">
@@ -103,6 +115,9 @@ function Profile(props) {
                     </>
                 )}
             </div>
+            <Link to="/logout" className="logout-link">
+                <button onClick={handleLogout} className="logout-button">Logout</button>
+            </Link>
         </div>
     );
 }
