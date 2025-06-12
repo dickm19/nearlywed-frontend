@@ -62,7 +62,6 @@ function Profile(props) {
 
     return (
         <div className="profile">
-            <button className="edit-profile-button" onClick={() => setEditMode(true)}>Edit Profile</button>
             <div className="profile-image-section">
                 <img
                     className="profile-picture"
@@ -98,6 +97,7 @@ function Profile(props) {
                     </form>
                 ) : (
                     <>
+                        <button className="edit-profile-button" onClick={() => setEditMode(true)}>Edit Profile</button>
                         <p>Email: {email}</p>
                         <p>Name: {`${firstName} ${lastName}`}</p>
                     </>
