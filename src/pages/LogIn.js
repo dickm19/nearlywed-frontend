@@ -39,10 +39,6 @@ class LogIn extends Component {
         .catch(error => console.log('api errors:', error))
     }
 
-    redirect = () => {
-        this.props.history.push('/')
-    }
-
     handleErrors = () => {
         return (
         <div>
