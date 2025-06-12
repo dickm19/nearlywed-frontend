@@ -23,10 +23,10 @@ function Layout(props) {
                         props.loggedInStatus ? (
                             <>
                                 <li>
-                                    <Link to="/profile">Profile</Link>
-                                </li>
-                                <li>
-                                    <Link to="/logout" onClick={handleClick}>Log Out</Link>
+                                    <Link to="/profile" className="profile-link">
+                                        <img src={props.user.avatar_url} alt="User Avatar" className="avatar-small" />
+                                        <p>Profile</p>
+                                    </Link>
                                 </li>
                             </>
                         ) : (
