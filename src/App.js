@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from 'axios';
 import Home from './pages/Home';
 import Layout from './pages/NavBar';
-import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
 import Profile from './pages/Profile';
 
@@ -60,9 +59,10 @@ class App extends Component {
             <Route
               path="/signup"
               element={
-                <SignUp
+                <LogIn
                   handleLogin={this.handleLogin}
                   loggedInStatus={this.state.isLoggedIn}
+                  signUp={true}
                 />
               }
             />
@@ -70,6 +70,7 @@ class App extends Component {
               exact path="/login"
               element={
                 <LogIn
+                  signUp={false}
                   handleLogin={this.handleLogin}
                   loggedInStatus={this.state.isLoggedIn}
                 />
