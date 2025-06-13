@@ -49,7 +49,7 @@ function App() {
           path="/"
           element={<Layout user={user} loggedInStatus={isLoggedIn} />}
         >
-          <Route index element={<Home />} />
+          <Route index element={<Home loggedInStatus={isLoggedIn} user={user}/>} />
           <Route
             path="/signup"
             element={
