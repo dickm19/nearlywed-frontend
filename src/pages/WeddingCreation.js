@@ -1,4 +1,4 @@
-function WeddingCreation() {
+function WeddingCreation({ user }) {
     return (
         <div>
             <h1>Wedding Creation Page</h1>
