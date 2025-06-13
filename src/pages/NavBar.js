@@ -1,4 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
+import defaultAvatar from "../assets/defaultProfile.png";
 
 function Layout(props) {
     return (
@@ -13,7 +14,7 @@ function Layout(props) {
                             <>
                                 <li>
                                     <Link to="/profile" className="profile-link">
-                                        <img src={props.user.avatar_url} alt="User Avatar" className="avatar-small" />
+                                        <img src={props.user.avatar_url || defaultAvatar} alt="User Avatar" className="avatar-small" />
                                         <p>Profile</p>
                                     </Link>
                                 </li>
