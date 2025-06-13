@@ -1,6 +1,7 @@
 import Popup from 'reactjs-popup';
 import WeddingCreation from './WeddingCreation';
 import 'reactjs-popup/dist/index.css';
+import '../styles/Home.scss';
 
 function Home({ loggedInStatus, user }) {
     return (
