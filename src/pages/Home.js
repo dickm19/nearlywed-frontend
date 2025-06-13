@@ -12,7 +12,7 @@ function Home({ loggedInStatus, user }) {
                     { user.role === 'nearlywed' ? (
                         <div className='nearlywed-home'>
                             <p>Hello! As a nearlywed, you can create and manage your wedding registry, invite guests, and much more!</p>
-                            <Popup trigger={<button className="button"> Get Started </button>} position="bottom center">
+                            <Popup trigger={<button className="button"> Get Started </button>}>
                                 <WeddingCreation user={user} />
                             </Popup>
                         </div>
