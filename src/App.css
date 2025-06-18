@@ -121,3 +121,34 @@
   width: 100%;
   height: 100%;
 }
+
+.user-menu-options {
+  text-align: center;
+  width: 100%;
+  padding-left: 0;
+}
+
+.user-menu-options li {
+  list-style: none;
+  text-align: center;
+  border: 1px solid grey;
+  border-right: none;
+  border-left: none;
+}
+
+.user-menu-options li:last-child {
+  border-top: none;
+}
+
+.user-menu-options button {
+  margin-top: 1.5em;
+  background: none;
+  cursor: pointer;
+  font-size: 110%;
+  border: white;
+}
+
+.user-menu-options button:hover {
+  background-color: #f5c3dc;
+  border-radius: 5px;
+}
