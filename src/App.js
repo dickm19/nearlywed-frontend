@@ -47,29 +47,9 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Layout user={user} loggedInStatus={isLoggedIn} />}
+          element={<Layout user={user} loggedInStatus={isLoggedIn} handleLogin={handleLogin} />}
         >
           <Route index element={<Home loggedInStatus={isLoggedIn} user={user}/>} />
-          <Route
-            path="/signup"
-            element={
-              <LogIn
-                handleLogin={handleLogin}
-                loggedInStatus={isLoggedIn}
-                signUp={true}
-              />
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <LogIn
-                signUp={false}
-                handleLogin={handleLogin}
-                loggedInStatus={isLoggedIn}
-              />
-            }
-          />
           <Route
             path="/profile"
             element={<Profile user={user} handleUserUpdate={handleUserUpdate} handleLogout={handleLogout}/>}
