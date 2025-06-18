@@ -5,8 +5,23 @@ import 'reactjs-popup/dist/index.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import LogIn from './LogIn'
+import axios from 'axios'
+import {useNavigate } from 'react-router-dom';
+
 
 function Layout(props) {
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        axios.delete('http://localhost:3001/logout', {withCredentials: true})
+            .then(() => {
+                props.handleLogout()
+                navigate('/')
+            })
+            .catch(error => console.log(error))
+    }
+
+
     return (
         <div className="navbar">
             <nav>
@@ -20,10 +35,19 @@ function Layout(props) {
                                 <li>
                                     <div className="user-menu">
                                         <Popup trigger={<button className="user-menu-button"><FontAwesomeIcon className="dropdown-icon" icon={faBars} /></button>}>
-                                            <Link to="/profile" className="profile-link">
-                                                <img src={props.user.avatar_url || defaultAvatar} alt="User Avatar" className="avatar-small" />
-                                                <p>Profile</p>
-                                            </Link>
+                                            <ul className="user-menu-options">
+                                                <li>
+                                                    <Link to="/profile" className="profile-link">
+                                                        <img src={props.user?.avatar_url || defaultAvatar} alt="User Avatar" className="avatar-small" />
+                                                        <p>Profile</p>
+                                                    </Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/logout" className="logout-link">
+                                                        <button onClick={handleLogout} className="logout-button">Logout</button>
+                                                    </Link>
+                                                </li>
+                                            </ul>
                                         </Popup>
                                     </div>
                                 </li>
