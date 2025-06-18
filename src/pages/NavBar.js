@@ -7,7 +7,7 @@ import { faBars } from '@fortawesome/free-solid-svg-icons';
 import LogIn from './LogIn'
 import axios from 'axios'
 import {useNavigate } from 'react-router-dom';
-
+import '../styles/NavBar.scss'
 
 function Layout(props) {
     const navigate = useNavigate();
