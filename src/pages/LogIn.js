@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import axios from 'axios';
 
 function LogIn(props) {
@@ -7,6 +7,7 @@ function LogIn(props) {
     const [password, setPassword] = useState('');
     const [passwordConfirmation, setPasswordConfirmation] = useState('');
     const [errors, setErrors] = useState('');
+    const [signUp, setSignUp] = useState(true)
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -72,7 +73,7 @@ function LogIn(props) {
                         onChange={handleChange}
                     />
                 </div>
-                {props.signUp ? (
+                {signUp ? (
                     <>
                         <div className="form-group">
                             <label htmlFor="password_confirmation">Confirm Password:</label>
@@ -87,14 +88,14 @@ function LogIn(props) {
                         </div>
                         <button type="submit">Sign Up</button>
                         <div className="form-group">
-                            <p>Already have an account? <Link to='/login'>Log In</Link></p>
+                            <p>Already have an account? <button onClick={() => setSignUp(false)}>Log In</button></p>
                         </div>
                     </>
                 ) : (
                     <>
                         <button type="submit">Log In</button>
                         <div className="form-group">
-                            <p>Don't have an account? <Link to="/signup">Sign Up</Link></p>
+                            <p>Don't have an account? <button onClick={() => setSignUp(true)}>Sign Up</button></p>
                         </div>
                     </>
                 )}
