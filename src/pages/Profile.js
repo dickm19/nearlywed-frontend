@@ -13,9 +13,9 @@ function Profile(props) {
 
     const { register, handleSubmit } = useForm({
         values: {
-            email: user.email || email,
-            first_name: user.first_name || firstName,
-            last_name: user.last_name || lastName
+            email: user?.email || email,
+            first_name: user?.first_name || firstName,
+            last_name: user?.last_name || lastName
         }
     });
 
