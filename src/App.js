@@ -47,12 +47,19 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Layout user={user} loggedInStatus={isLoggedIn} handleLogin={handleLogin} />}
+          element={
+            <Layout
+              user={user}
+              loggedInStatus={isLoggedIn}
+              handleLogin={handleLogin}
+              handleLogout={handleLogout}
+            />
+          }
         >
           <Route index element={<Home loggedInStatus={isLoggedIn} user={user}/>} />
           <Route
             path="/profile"
-            element={<Profile user={user} handleUserUpdate={handleUserUpdate} handleLogout={handleLogout}/>}
+            element={<Profile user={user} handleUserUpdate={handleUserUpdate}/>}
           />
         </Route>
       </Routes>
