@@ -20,7 +20,7 @@ function LogIn(props) {
         event.preventDefault();
         const user = { email, password };
         let url = ""
-        if (props.signUp) {
+        if (signUp) {
             user.password_confirmation = passwordConfirmation;
             url = "http://localhost:3001/users"
         } else {
