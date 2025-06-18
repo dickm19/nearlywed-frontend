@@ -18,20 +18,26 @@ function Layout(props) {
                         props.loggedInStatus ? (
                             <>
                                 <li>
-                                    <Link to="/profile" className="profile-link">
-                                        <img src={props.user.avatar_url || defaultAvatar} alt="User Avatar" className="avatar-small" />
-                                        <p>Profile</p>
-                                    </Link>
+                                    <div className="user-menu">
+                                        <Popup trigger={<button className="user-menu-button"><FontAwesomeIcon className="dropdown-icon" icon={faBars} /></button>}>
+                                            <Link to="/profile" className="profile-link">
+                                                <img src={props.user.avatar_url || defaultAvatar} alt="User Avatar" className="avatar-small" />
+                                                <p>Profile</p>
+                                            </Link>
+                                        </Popup>
+                                    </div>
                                 </li>
                             </>
                         ) : (
                             <li>
-                                <Popup trigger={<button className="button"><FontAwesomeIcon icon={faBars} /></button>}>
-                                    <LogIn
-                                        handleLogin={props.handleLogin}
-                                        loggedInStatus={props.isLoggedIn}
-                                    />
-                                </Popup>
+                                <div className="user-menu">
+                                    <Popup trigger={<button className="user-menu-button"><FontAwesomeIcon className="dropdown-icon" icon={faBars} /></button>}>
+                                        <LogIn
+                                            handleLogin={props.handleLogin}
+                                            loggedInStatus={props.isLoggedIn}
+                                        />
+                                    </Popup>
+                                </div>
                             </li>
                         )
                     }
