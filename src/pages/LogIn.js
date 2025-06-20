@@ -49,7 +49,7 @@ function LogIn(props) {
 
     return (
         <div className="signup">
-            {props.loggedInStatus ? <Navigate to="/" /> : <h1>Sign Up</h1>}
+            {props.loggedInStatus ? <Navigate to="/" /> : <h1>{signUp ? "Sign Up" : "Log In"}</h1>}
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="email">Email:</label>
