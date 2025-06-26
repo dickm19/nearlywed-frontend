@@ -1,4 +1,3 @@
-import Popup from 'reactjs-popup';
 import WeddingCreation from './WeddingCreation';
 import 'reactjs-popup/dist/index.css';
 import '../styles/Home.scss';
@@ -12,9 +11,7 @@ function Home({ loggedInStatus, user }) {
                     { user.role === 'nearlywed' ? (
                         <div className='nearlywed-home'>
                             <p>Hello! As a nearlywed, you can create and manage your wedding registry, invite guests, and much more!</p>
-                            <Popup trigger={<button className="button"> Get Started </button>}>
-                                <WeddingCreation user={user} />
-                            </Popup>
+                            <WeddingCreation user={user} />
                         </div>
                     ) : (
                         <p>Hello! As a guest, you can browse wedding registries, purchase gifts, and rsvp for events.</p>
