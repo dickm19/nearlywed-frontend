@@ -21,7 +21,6 @@ function Layout(props) {
             .catch(error => console.log(error))
     }
 
-
     return (
         <div className="navbar">
             <nav>
