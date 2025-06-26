@@ -14,7 +14,9 @@ function Home({ loggedInStatus, user }) {
                             <WeddingCreation user={user} />
                         </div>
                     ) : (
-                        <p>Hello! As a guest, you can browse wedding registries, purchase gifts, and rsvp for events.</p>
+                        <div className='guest-home'>
+                            <p>Hello! As a guest, you can browse wedding registries, purchase gifts, and rsvp for events.</p>
+                        </div>
                     )}
                 </>
             ) : (
