@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function EmailInput({ submitText }) {
+function EmailInput({ submitText, submitHandler }) {
     const [emails, setEmails] = useState([]);
     const [inputValue, setInputValue] = useState('');
 
@@ -22,14 +22,14 @@ function EmailInput({ submitText }) {
         setEmails(emails.filter((email) => email !== emailToDelete));
     };
 
-    const handleEmailSubmmit = (event) => {
+    const handleEmailSubmit = (event) => {
         event.preventDefault();
-        console.log('Submitted emails:', emails);
+        submitHandler(emails);
     }
 
     return (
         <div className="email-input">
-            <form onSubmit={handleEmailSubmmit}>
+            <form onSubmit={handleEmailSubmit}>
                     <div className="input-pills" onClick={() => document.getElementById('email-input')?.focus()}>
                         {emails.map((email, index) => (
                             <span key={index} className="pill">
