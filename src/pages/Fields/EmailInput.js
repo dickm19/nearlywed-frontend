@@ -28,7 +28,7 @@ function EmailInput({ submitText }) {
     }
 
     return (
-        <div class="email-input">
+        <div className="email-input">
             <form onSubmit={handleEmailSubmmit}>
                     <div className="input-pills" onClick={() => document.getElementById('email-input')?.focus()}>
                         {emails.map((email, index) => (
