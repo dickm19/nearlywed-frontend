@@ -10,7 +10,6 @@ function Home({ loggedInStatus, user }) {
                 <>
                     { user.role === 'nearlywed' ? (
                         <div className='nearlywed-home'>
-                            <p>Hello! As a nearlywed, you can create and manage your wedding registry, invite guests, and much more!</p>
                             <WeddingCreation user={user} />
                         </div>
                     ) : (
