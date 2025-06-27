@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import axios from 'axios';
 
-function EmailInput({ submitText, submitHandler }) {
+function EmailInput({ submitText, user }) {
     const [emails, setEmails] = useState([]);
     const [inputValue, setInputValue] = useState('');
 
@@ -24,8 +25,16 @@ function EmailInput({ submitText, submitHandler }) {
 
     const handleEmailSubmit = (event) => {
         event.preventDefault();
-        submitHandler(emails);
+        axios.patch(`http://localhost:3001/weddings/${user.wedding_id}`, { wedding: { guest_emails: emails } }, {
+                withCredentials: true,
+            })
+            .then((response) => {
+                setEmails(response.data.guest_emails);
+            })
+            .catch(error => console.log('Error uploading image:', error));
     }
+
+    
 
     return (
         <div className="email-input">
