@@ -10,9 +10,6 @@ function WeddingCreation({ user }) {
         setSelected(event);
     }
 
-    const handleGuestInvite = (guests) => {
-        console.log(guests)
-    }
 
     return (
         <div className="wedding-creation">
@@ -34,7 +31,7 @@ function WeddingCreation({ user }) {
             </nav>
             { selected === 'home' ? <p>Home test</p> : null }
             { selected === 'registry' ? <p>Registry test</p> : null}
-            { selected === 'guests' ? <EmailInput submitText="Invite Guests" submitHandler={handleGuestInvite}/> : null }
+            { selected === 'guests' ? <EmailInput submitText="Invite Guests" user={user} /> : null }
             { selected === 'details' ? <p>Details test</p> : null }
         </div>
     )
