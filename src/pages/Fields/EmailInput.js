@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-function EmailInput({ submitText, user }) {
-    const [emails, setEmails] = useState([]);
+function EmailInput({ submitText, wedding }) {
+    const [emails, setEmails] = useState(wedding.guest_emails || []);
     const [inputValue, setInputValue] = useState('');
 
     const handleKeyDown = (e) => {
@@ -25,13 +25,13 @@ function EmailInput({ submitText, user }) {
 
     const handleEmailSubmit = (event) => {
         event.preventDefault();
-        axios.patch(`http://localhost:3001/weddings/${user.wedding_id}`, { wedding: { guest_emails: emails } }, {
+        axios.patch(`http://localhost:3001/weddings/${wedding.id}`, { wedding: { guest_emails: emails } }, {
                 withCredentials: true,
             })
             .then((response) => {
                 setEmails(response.data.guest_emails);
             })
-            .catch(error => console.log('Error uploading image:', error));
+            .catch(error => console.log('Error adding guests:', error));
     }
 
     
