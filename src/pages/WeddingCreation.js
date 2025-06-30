@@ -1,15 +1,27 @@
 import '../styles/WeddingCreation.scss';
 import EmailInput from './Fields/EmailInput';
 import { Link } from 'react-router-dom';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import axios from 'axios';
 
 function WeddingCreation({ user }) {
     const [selected, setSelected] = useState('home');
+    const [wedding, setWedding] = useState()
 
     const handleClick = (event) => {
         setSelected(event);
     }
 
+    const getCurrentWedding = () => {
+        axios.get(`http://localhost:3001/weddings/${user.wedding_id}`, { withCredentials: true })
+            .then((response) => setWedding(response.data))
+            .catch(error => console.log('api errors:', error));
+    }
+
+    useEffect(() => {
+        getCurrentWedding();
+        // eslint-disable-next-line
+    }, [])
 
     return (
         <div className="wedding-creation">
@@ -31,7 +43,7 @@ function WeddingCreation({ user }) {
             </nav>
             { selected === 'home' ? <p>Home test</p> : null }
             { selected === 'registry' ? <p>Registry test</p> : null}
-            { selected === 'guests' ? <EmailInput submitText="Invite Guests" user={user} /> : null }
+            { selected === 'guests' ? <EmailInput submitText="Invite Guests" wedding={wedding} user={user} /> : null }
             { selected === 'details' ? <p>Details test</p> : null }
         </div>
     )
