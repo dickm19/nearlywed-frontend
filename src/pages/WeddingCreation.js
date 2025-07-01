@@ -1,5 +1,6 @@
 import '../styles/WeddingCreation.scss';
 import EmailInput from './Fields/EmailInput';
+import Index from './Guests/Index'
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react'
 import axios from 'axios';
@@ -43,7 +44,12 @@ function WeddingCreation({ user }) {
             </nav>
             { selected === 'home' ? <p>Home test</p> : null }
             { selected === 'registry' ? <p>Registry test</p> : null}
-            { selected === 'guests' ? <EmailInput submitText="Invite Guests" wedding={wedding} user={user} /> : null }
+            { selected === 'guests' ? (
+                <>
+                    <EmailInput submitText="Invite Guests" wedding={wedding} user={user} />
+                    <Index wedding={wedding}/>
+                </>
+            ) : null }
             { selected === 'details' ? <p>Details test</p> : null }
         </div>
     )

@@ -1,11 +1,9 @@
 
 
-function Guest({ first_name, last_name, email, rsvp}) {
+function Guest({ guest }) {
     return (
         <div className='guest-slot'>
-            { first_name } { last_name }
-            { email }
-            { rsvp }
+            { guest }
         </div>
     )
 }

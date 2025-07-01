@@ -1,9 +1,9 @@
 import Guest from './Guest';
 
-function Index({ guests }) {
+function Index({ wedding }) {
     return (
         <div className="guest-index">
-            { guests.map((guest) => {
+            { wedding.guest_emails.map((guest) => {
                 return (
                     <Guest guest={guest}/>
                 )
