@@ -42,7 +42,7 @@ function WeddingCreation({ user }) {
                     </li>
                 </ul>
             </nav>
-            { selected === 'home' ? <p>Home test</p> : null }
+            { selected === 'home' ? <WeddingHome/> : null }
             { selected === 'registry' ? <p>Registry test</p> : null}
             { selected === 'guests' ? (
                 <>
