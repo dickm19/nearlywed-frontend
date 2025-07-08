@@ -1,9 +1,12 @@
 import { useState } from 'react'
 import axios from 'axios'
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 function WeddingDetails({ wedding }) {
-    const { couple_names, id } = wedding
+    const { couple_names, id, date } = wedding
     const [coupleNames, setCoupleNames] = useState(couple_names || "");
+    const [weddingDate, setWeddingDate] = useState(date || new Date());
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -12,12 +15,19 @@ function WeddingDetails({ wedding }) {
 
     const handleFormSubmit = (event) => {
         event.preventDefault();
+        const formData = { wedding: {
+            couple_names: coupleNames,
+            date: weddingDate,
+        }}
         axios.patch(
             `http://localhost:3001/weddings/${id}`,
-            { wedding: { couple_names: coupleNames } },
+            formData,
             { withCredentials: true }
         )
-        .then((response) => setCoupleNames(response.data.couple_names))
+        .then((response) => {
+            setWeddingDate(response.data.date)
+            setCoupleNames(response.data.couple_names)
+        })
         .catch(error => console.log('error updating details: ', error))
     }
 
@@ -31,6 +41,10 @@ function WeddingDetails({ wedding }) {
                     name="couple-names"
                     value={coupleNames}
                     onChange={handleChange}
+                />
+                <DatePicker
+                    selected={weddingDate}
+                    onChange={(date) => setWeddingDate(date)}
                 />
                 <button type="submit">Save</button>
             </form>
