@@ -1,6 +1,8 @@
 import '../styles/WeddingCreation.scss';
 import EmailInput from './Fields/EmailInput';
 import Index from './Guests/Index'
+import WeddingHome from './WeddingHome'
+import WeddingDetails from './WeddingDetails'
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react'
 import axios from 'axios';
@@ -50,7 +52,7 @@ function WeddingCreation({ user }) {
                     <Index wedding={wedding}/>
                 </>
             ) : null }
-            { selected === 'details' ? <p>Details test</p> : null }
+            { selected === 'details' ? <WeddingDetails wedding={wedding}/> : null }
         </div>
     )
 }
