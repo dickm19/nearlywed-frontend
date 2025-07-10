@@ -25,7 +25,7 @@ function EmailInput({ submitText, wedding }) {
 
     const handleEmailSubmit = (event) => {
         event.preventDefault();
-        axios.patch(`http://localhost:3001/weddings/${wedding.id}`, { wedding: { guest_emails: emails } }, {
+        axios.patch(`http://localhost:3001/weddings/${wedding.id}/invite_guests`, { wedding: { guest_emails: emails } }, {
                 withCredentials: true,
             })
             .then((response) => {
