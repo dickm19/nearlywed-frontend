@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from 'axios';
 import Home from './pages/Home';
 import Layout from './pages/NavBar';
-import LogIn from './pages/LogIn';
+import GuestSignUp from './pages/GuestSignUp';
 import Profile from './pages/Profile';
 
 function App() {
@@ -61,6 +61,7 @@ function App() {
             path="/profile"
             element={<Profile user={user} handleUserUpdate={handleUserUpdate}/>}
           />
+          <Route path="/guest_signup" element={<GuestSignUp />} />
         </Route>
       </Routes>
     </BrowserRouter>
