@@ -61,7 +61,7 @@ function App() {
             path="/profile"
             element={<Profile user={user} handleUserUpdate={handleUserUpdate}/>}
           />
-          <Route path="/guest_signup" element={<GuestSignUp />} />
+          <Route path="/guest_signup" element={<GuestSignUp handleLogin={handleLogin}/>} />
         </Route>
       </Routes>
     </BrowserRouter>
