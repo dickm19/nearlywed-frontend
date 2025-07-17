@@ -42,6 +42,21 @@ function GuestSignUp(props) {
             </ul>
         </div>
     );
+    const rsvpOptions = [
+        {
+            value: 'Yes',
+            label: 'Yes'
+        },
+        { 
+            value: 'No',
+            label: 'No'
+        },
+        {
+            value: 'Maybe',
+            label: 'Maybe',
+        }
+    ];
+
     return (
         <div>
             <h1>Guest Sign Up</h1>
