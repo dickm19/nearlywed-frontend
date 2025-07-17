@@ -85,13 +85,15 @@ function GuestSignUp(props) {
                 </div>
                 <div className="form-group">
                     <label htmlFor="rsvp">RSVP:</label>
-                    <input
-                        type="text"
-                        id="rsvp"
+                    <Select
+                        options={rsvpOptions}
+                        values={[{ value: rsvp }]}
+                        onChange={(values) => setRsvp(values[0].value)}
+                        placeholder="Select RSVP"
+                        labelField="label"
+                        valueField="value"
+                        searchable={false}
                         name="rsvp"
-                        value={rsvp}
-                        required
-                        onChange={handleChange}
                     />
                 </div>
                 <div className="form-group">
