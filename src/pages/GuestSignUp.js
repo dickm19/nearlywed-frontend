@@ -21,7 +21,7 @@ function GuestSignUp(props) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const user = { email, password, password_confirmation: passwordConfirmation, full_name: guestName, rsvp, role_name: 'guest' };
+        const user = { email, password, password_confirmation: passwordConfirmation, full_name: guestName, rsvp  };
         axios.post("http://localhost:3001/users/guest_signup", { user }, { withCredentials: true })
             .then(response => {
                 if (response.data) {
