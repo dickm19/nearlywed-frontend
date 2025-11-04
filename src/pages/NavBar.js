@@ -30,6 +30,9 @@ function Layout(props) {
                         props.loggedInStatus ? (
                             <>
                                 <li>
+                                    <Link to="/"><p>Home</p></Link>
+                                </li>
+                                <li>
                                     <div className="user-menu">
                                         <Popup trigger={<button className="user-menu-button"><FontAwesomeIcon className="dropdown-icon" icon={faBars} /></button>}>
                                             <ul className="user-menu-options">
