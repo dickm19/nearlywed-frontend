@@ -25,9 +25,7 @@ function Layout(props) {
         <div className="navbar">
             <nav>
                 <ul>
-                    <li>
-                        <Link to="/"><p>Home</p></Link>
-                    </li>
+                    <li className="welcome">Welcome to NearlyWed!</li>
                     {
                         props.loggedInStatus ? (
                             <>

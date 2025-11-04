@@ -5,7 +5,6 @@ import '../styles/Home.scss';
 function Home({ loggedInStatus, user }) {
     return (
         <div className="home">
-            <h1>Welcome to NearlyWed!</h1>
             { loggedInStatus && user ? (
                 <>
                     { user.role === 'nearlywed' ? (
