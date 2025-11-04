@@ -1,3 +1,7 @@
+$background: #f79fb7;
+$lighter-background: #ffe1e9;
+$darker-background: #fd82a3;
+
 .form-group {
     margin-bottom: 15px;
     
@@ -13,7 +17,7 @@
         box-sizing: border-box;
         border: 1px solid #ccc;
         border-radius: 4px;
-    
+        background-color: $lighter-background;
         &:focus {
         border-color: #66afe9;
         outline: none;
@@ -25,13 +29,13 @@
 button {
     width: 30%;
     padding: 10px;
-    background-color: #b0b1b0;
+    background-color: $background;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
 
     &:hover {
-        background-color: #626362;
+        background-color: $darker-background;
     }
 }
