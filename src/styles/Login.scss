@@ -2,9 +2,13 @@ $background: #f79fb7;
 $lighter-background: #ffe1e9;
 $darker-background: #fd82a3;
 
+h1 {
+    color: white;
+    font-family: "Meow Script";
+}
 .form-group {
     margin-bottom: 15px;
-    
+    color: white;
     label {
         display: block;
         margin-bottom: 5px;
