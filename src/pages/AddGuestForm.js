@@ -3,12 +3,14 @@ import { useState } from "react";
 function AddGuestForm() {
     const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('')
-    const [guestName, setGuestName] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
 
     const handleChange = (event) => {
         const { name, value } = event.target;
         if (name === 'email') setEmail(value);
-        if (name === 'guestName') setGuestName(value);
+        if (name === 'firstName') setFirstName(value);
+        if (name === 'lastName') setLastName(value);
         if (name === 'phoneNumber') setPhoneNumber(value)
     }
 
@@ -20,12 +22,23 @@ function AddGuestForm() {
         <form onSubmit={handleSubmit}>
             <div className="form-group">
                 <div className="form-group">
-                    <label htmlFor="full-name">Full Name:</label>
+                    <label htmlFor="first-name">First Name:</label>
                     <input
                         type="text"
-                        id="full-name"
-                        name="full-name"
-                        value={guestName}
+                        id="first-name"
+                        name="first-name"
+                        value={firstName}
+                        required
+                        onChange={handleChange}
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="last-name">Last Name:</label>
+                    <input
+                        type="text"
+                        id="last-name"
+                        name="last-name"
+                        value={lastName}
                         required
                         onChange={handleChange}
                     />
