@@ -1,8 +1,8 @@
 import '../styles/WeddingCreation.scss';
-import EmailInput from './Fields/EmailInput';
-import Index from './Guests/Index'
+import Popup from 'reactjs-popup';
 import WeddingHome from './WeddingHome'
 import WeddingDetails from './WeddingDetails'
+import AddGuestForm from './AddGuestForm';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react'
 import axios from 'axios';
@@ -48,8 +48,9 @@ function WeddingCreation({ user }) {
             { selected === 'registry' ? <p>Registry test</p> : null}
             { selected === 'guests' ? (
                 <>
-                    <EmailInput submitText="Invite Guests" wedding={wedding} user={user} />
-                    <Index wedding={wedding}/>
+                    <Popup trigger={<button className="add-guest-button">Add Guest</button>}>
+                        <AddGuestForm/>
+                    </Popup>
                 </>
             ) : null }
             { selected === 'details' ? <WeddingDetails wedding={wedding}/> : null }
